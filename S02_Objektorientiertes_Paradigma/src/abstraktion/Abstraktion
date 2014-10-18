@@ -1,0 +1,6 @@
+„Abstraktion ist ein theoretisches Konzept zur Beschreibung von Objekten und Klassen.“
+Weil ein Objekt sowohl Daten, als auch Methoden beinhaltet, kann die Abstraktion sowohl die Daten selbst als auch deren Attribute konsistent behandeln.
+Die abstrakte Beschreibung von Objekten und Klassen dient im Wesentlichen zur Definition dieser.
+Eine Klasse kann also sowohl vollständige Methoden als auch nur Signaturen dieser enthalten, ohne eine eigentliche Implementierung.
+Abstrakte Klassen/Methoden sind quasi ein Zeichen‚ dass hier eine Methode vorhanden ist, die es eigentlich nicht gibt.
+Eine sinnvolle Einsetzung findet bei der Vererbung statt, wo diese mitvererbt und implementiert werden (können).
