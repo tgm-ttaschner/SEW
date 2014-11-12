@@ -88,46 +88,6 @@ public class CalcTest {
 	}
 
 	/**
-	 * Ein groﬂer Wert wird der Liste hinzugeuegt, das Verhalten ist: addieren
-	 */
-	@Test
-	public void testAddAddBigValue() {
-		Calculator c = new Calculator(l, 10.0, new AdditionCalculator());
-		c.addValue(Double.MAX_VALUE);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.MAX_VALUE +"]");
-	}
-
-	/**
-	 * Ein zu groﬂer Wert wird der Liste hinzugeuegt, das Verhalten ist: addieren
-	 */
-	@Test
-	public void testAddAddTooBigValue() {
-		Calculator c = new Calculator(l, 10.0, new AdditionCalculator());
-		c.addValue(Double.MAX_VALUE*2);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.POSITIVE_INFINITY +"]");
-	}
-
-	/**
-	 * Ein kleiner Wert wird der Liste hinzugeuegt, das Verhalten ist: addieren
-	 */
-	@Test
-	public void testAddAddSmallValue() {
-		Calculator c = new Calculator(l, 10.0, new AdditionCalculator());
-		c.addValue(Double.MIN_VALUE);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.MIN_VALUE +"]");
-	}
-
-	/**
-	 * Ein zu kleiner Wert wird der Liste hinzugeuegt, das Verhalten ist: addieren
-	 */
-	@Test
-	public void testAddAddTooSmallValue() {
-		Calculator c = new Calculator(l, 10.0, new AdditionCalculator());
-		c.addValue(Double.MIN_VALUE*2);
-		assertNotEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.NEGATIVE_INFINITY +"]");
-	}
-
-	/**
 	 * Ein null Wert wird der Liste hinzugeuegt, das Verhalten ist: addieren
 	 * Eine NullPointerException wird erwartet.
 	 */
@@ -176,46 +136,6 @@ public class CalcTest {
 		Calculator c = new Calculator(l, 10.0, new SubstractionCalculator());
 		c.addValue(123.4);
 		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 123.4]");
-	}
-
-	/**
-	 * Ein groﬂer Wert wird der Liste hinzugeuegt, das Verhalten ist: subtrahieren
-	 */
-	@Test
-	public void testSubAddBigValue() {
-		Calculator c = new Calculator(l, 10.0, new SubstractionCalculator());
-		c.addValue(Double.MAX_VALUE);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.MAX_VALUE +"]");
-	}
-
-	/**
-	 * Ein zu groﬂer Wert wird der Liste hinzugeuegt, das Verhalten ist: subtrahieren
-	 */
-	@Test
-	public void testSubAddTooBigValue() {
-		Calculator c = new Calculator(l, 10.0, new SubstractionCalculator());
-		c.addValue(Double.MAX_VALUE*2);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.POSITIVE_INFINITY +"]");
-	}
-
-	/**
-	 * Ein kleiner Wert wird der Liste hinzugeuegt, das Verhalten ist: subtrahieren
-	 */
-	@Test
-	public void testSubAddSmallValue() {
-		Calculator c = new Calculator(l, 10.0, new SubstractionCalculator());
-		c.addValue(Double.MIN_VALUE);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.MIN_VALUE +"]");
-	}
-
-	/**
-	 * Ein zu kleiner Wert wird der Liste hinzugeuegt, das Verhalten ist: subtrahieren
-	 */
-	@Test
-	public void testSubAddTooSmallValue() {
-		Calculator c = new Calculator(l, 10.0, new SubstractionCalculator());
-		c.addValue(Double.MIN_VALUE*2);
-		assertNotEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.NEGATIVE_INFINITY +"]");
 	}
 
 	/**
@@ -270,46 +190,6 @@ public class CalcTest {
 	}
 
 	/**
-	 * Ein groﬂer Wert wird der Liste hinzugeuegt, das Verhalten ist: multiplizieren
-	 */
-	@Test
-	public void testMulAddBigValue() {
-		Calculator c = new Calculator(l, 10.0, new MultiplicationCalculator());
-		c.addValue(Double.MAX_VALUE);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.MAX_VALUE +"]");
-	}
-
-	/**
-	 * Ein zu groﬂer Wert wird der Liste hinzugeuegt, das Verhalten ist: multiplizieren
-	 */
-	@Test
-	public void testMulAddTooBigValue() {
-		Calculator c = new Calculator(l, 10.0, new MultiplicationCalculator());
-		c.addValue(Double.MAX_VALUE*2);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.POSITIVE_INFINITY +"]");
-	}
-
-	/**
-	 * Ein kleiner Wert wird der Liste hinzugeuegt, das Verhalten ist: multiplizieren
-	 */
-	@Test
-	public void testMulAddSmallValue() {
-		Calculator c = new Calculator(l, 10.0, new MultiplicationCalculator());
-		c.addValue(Double.MIN_VALUE);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.MIN_VALUE +"]");
-	}
-
-	/**
-	 * Ein zu kleiner Wert wird der Liste hinzugeuegt, das Verhalten ist: multiplizieren
-	 */
-	@Test
-	public void testMulAddTooSmallValue() {
-		Calculator c = new Calculator(l, 10.0, new MultiplicationCalculator());
-		c.addValue(Double.MIN_VALUE*2);
-		assertNotEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.NEGATIVE_INFINITY +"]");
-	}
-
-	/**
 	 * Ein null Wert wird der Liste hinzugeuegt, das Verhalten ist: multiplizieren
 	 * Eine NullPointerException wird erwartet.
 	 */
@@ -358,46 +238,6 @@ public class CalcTest {
 		Calculator c = new Calculator(l, 10.0, new DivisionCalculator());
 		c.addValue(123.4);
 		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, 123.4]");
-	}
-
-	/**
-	 * Ein groﬂer Wert wird der Liste hinzugeuegt, das Verhalten ist: dividieren
-	 */
-	@Test
-	public void testDivAddBigValue() {
-		Calculator c = new Calculator(l, 10.0, new DivisionCalculator());
-		c.addValue(Double.MAX_VALUE);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.MAX_VALUE +"]");
-	}
-
-	/**
-	 * Ein zu groﬂer Wert wird der Liste hinzugeuegt, das Verhalten ist: dividieren
-	 */
-	@Test
-	public void testDivAddTooBigValue() {
-		Calculator c = new Calculator(l, 10.0, new DivisionCalculator());
-		c.addValue(Double.MAX_VALUE*2);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.POSITIVE_INFINITY +"]");
-	}
-
-	/**
-	 * Ein kleiner Wert wird der Liste hinzugeuegt, das Verhalten ist: dividieren
-	 */
-	@Test
-	public void testDivAddSmallValue() {
-		Calculator c = new Calculator(l, 10.0, new DivisionCalculator());
-		c.addValue(Double.MIN_VALUE);
-		assertEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.MIN_VALUE +"]");
-	}
-
-	/**
-	 * Ein zu kleiner Wert wird der Liste hinzugeuegt, das Verhalten ist: dividieren
-	 */
-	@Test
-	public void testDivAddTooSmallValue() {
-		Calculator c = new Calculator(l, 10.0, new DivisionCalculator());
-		c.addValue(Double.MIN_VALUE*2);
-		assertNotEquals(c.toString(), "[1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0, "+ Double.NEGATIVE_INFINITY +"]");
 	}
 
 	/**
