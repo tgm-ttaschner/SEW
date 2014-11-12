@@ -58,7 +58,7 @@ public class Calculator {
 	public String toString() {
 		return values.toString();
 	}
-	
+
 	/**
 	 * @return calculatorBehaviour das Verhalten, anhand dessen der Rechner dann entscheidet, was mit den Input geschehen soll
 	 */

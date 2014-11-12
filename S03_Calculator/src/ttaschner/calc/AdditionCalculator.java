@@ -11,7 +11,7 @@ import java.util.List;
  *
  */
 public class AdditionCalculator implements CalculatorBehaviour {	
-	
+
 	/**
 	 * @param values die Liste mit den Werten
 	 * @param modifier Wert, mit denen die Werte der Liste modifiziert werden
