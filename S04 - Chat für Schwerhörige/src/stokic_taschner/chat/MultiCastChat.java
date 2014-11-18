@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * @author Stefan Stokic
- * @date 18112014
+ * @version 18112014
  * 
  * Dieses Programm soll einen Chatclient repräsentieren, der die Nachrichten der einzelnen Teilnehmen in CAPS LOCK Schreibweise (Großbuchstaben) an alle anderen Chatteilnehmer schickt.
  * Zusätzlich werden noch die Benutzername, ein Timestamp mitgeschickt und eventuell vorkommende Schimpfwörter durch * zensiert.
@@ -87,7 +87,7 @@ public class MultiCastChat {
 
 	/**
 	 * @author Stefan Stokic
-	 * @date 18112014
+	 * @version 18112014
 	 * 
 	 * Dieses Programm soll einen Chatclient repräsentieren, der die Nachrichten der einzelnen Teilnehmen in CAPS LOCK Schreibweise (Großbuchstaben) an alle anderen Chatteilnehmer schickt.
 	 * Zusätzlich werden noch die Benutzername, ein Timestamp mitgeschickt und eventuell vorkommende Schimpfwörter durch * zensiert.
