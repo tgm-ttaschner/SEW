@@ -1,9 +1,8 @@
-package stokic_taschner;
+package stokic_taschner.chat;
 
 import java.io.*;
 import java.net.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.text.*;
 import java.util.Date;
 
 /**
