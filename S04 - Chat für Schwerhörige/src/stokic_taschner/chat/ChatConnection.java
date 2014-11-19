@@ -7,8 +7,8 @@ package stokic_taschner.chat;
  * @author Stefan Stokic
  * @version 19112014
  */
-public interface MulticastConnection {
+public interface ChatConnection {
 
-	public void setupMulticastConnection(String username, String hostname, int port);
-	public void startMulticastChat();
+	public void setupChatConnection(String username, String hostname, int port);
+	public void startChat();
 }
