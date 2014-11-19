@@ -30,6 +30,38 @@ public class MulticastChat implements ChatConnection {
 		this.port = port;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getHostname() {
+		return hostname;
+	}
+
+	public void setHostname(String hostname) {
+		this.hostname = hostname;
+	}
+
+	public int getPort() {
+		return port;
+	}
+
+	public void setPort(int port) {
+		this.port = port;
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
 	/**
 	 * @param username der Benutzername, der beim Versenden der Nachrichten im Chat angezeigt werden soll
 	 * @param hostname die Adresse des Multicastnetzes, an dem der Socket erstellt werden soll
