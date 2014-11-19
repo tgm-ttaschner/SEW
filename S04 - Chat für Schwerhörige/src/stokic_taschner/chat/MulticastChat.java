@@ -2,8 +2,6 @@ package stokic_taschner.chat;
 
 import java.io.*;
 import java.net.*;
-import java.text.*;
-import java.util.Date;
 
 /**
  * @author Stefan Stokic
@@ -99,17 +97,5 @@ public class MulticastChat implements ChatConnection {
 			// Ausgabe der Fehlermeldung
 			System.out.println("Error: " + e.getMessage());
 		}
-	}
-
-	/**
-	 * @param args Argumente für Main
-	 */
-	public static void main(String[] args) {
-
-		// Für 1. Tests wird für den Benutzernamen einfach das aktuelle Datum und die Uhrzeit genommen, da es ja keinerlei String.random(size) Methoden von Haus aus gibt.
-		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
-
-		MulticastChat chat = new MulticastChat(dateFormat.format(new Date()), "224.1.2.3", 8888);
-		chat.startChat();
-	}
+	} 
 }
