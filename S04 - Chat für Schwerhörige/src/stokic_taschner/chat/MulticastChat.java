@@ -18,8 +18,7 @@ public class MulticastChat implements MulticastConnection {
 	private String username;
 	private String hostname;
 	private int port;
-
-	String msg = "";
+	private String msg = "";
 
 	/**
 	 * @param username der Benutzername, der beim Versenden der Nachrichten im Chat angezeigt werden soll
@@ -33,6 +32,11 @@ public class MulticastChat implements MulticastConnection {
 		this.port = port;
 	}
 
+	/**
+	 * @param username der Benutzername, der beim Versenden der Nachrichten im Chat angezeigt werden soll
+	 * @param hostname die Adresse des Multicastnetzes, an dem der Socket erstellt werden soll
+	 * @param port der Port, an dem der Socket erstellt werden soll
+	 */
 	@Override
 	public void setupMulticastConnection(String username, String hostname, int port) {
 
@@ -47,10 +51,10 @@ public class MulticastChat implements MulticastConnection {
 		try {
 
 			// IP-Adresse wird gespeichert
-			InetAddress group = InetAddress.getByName(hostname);
+			InetAddress group = InetAddress.getByName(this.hostname);
 
 			// MulticastSocket an angegebenem Port wird erstellt
-			MulticastSocket mSocket = new MulticastSocket(port);
+			MulticastSocket mSocket = new MulticastSocket(this.port);
 
 			// Socket wird einer Multicastgruppe hinzugefügt
 			mSocket.joinGroup(group);
@@ -73,7 +77,7 @@ public class MulticastChat implements MulticastConnection {
 				if(!(msg.equals("QUIT"))) {
 
 					// Verpacken und adressieren der Nachricht
-					DatagramPacket sendPacket = new DatagramPacket(msg.getBytes(), msg.length(), group, port);
+					DatagramPacket sendPacket = new DatagramPacket(msg.getBytes(), msg.length(), group, this.port);
 
 					// Senden der Nachricht
 					mSocket.send(sendPacket);
@@ -96,7 +100,7 @@ public class MulticastChat implements MulticastConnection {
 			System.out.println("Error: " + e.getMessage());
 		}
 	}
-	
+
 	/**
 	 * @param args Argumente für Main
 	 */
