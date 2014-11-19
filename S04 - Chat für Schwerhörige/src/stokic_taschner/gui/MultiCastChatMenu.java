@@ -15,15 +15,15 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class MultiCastChatMenu extends JPanel implements ActionListener {
 	
-	JFrame f_menu, f_chat;
+	JFrame f_menu;
 	
-	JPanel p_hallo, p_username, p_login, p_buttons, p_client, p_chat, p_input;
+	JPanel p_hallo, p_username, p_login, p_buttons;
 	
 	JLabel l_hallo, l_username, l_login;
 	
-	JTextField tf_username, tf_login, tf_input, tf_output;
+	JTextField tf_username, tf_login;
 	
-	JButton b_connect, b_help, b_send;
+	JButton b_connect, b_help;
 	
 	public MultiCastChatMenu() {
 		
@@ -56,9 +56,6 @@ public class MultiCastChatMenu extends JPanel implements ActionListener {
 		
 		b_help = new JButton("Help");
 		b_help.addActionListener(this);
-		
-		
-		
 		
 		BoxLayout lay_main = new BoxLayout(this, BoxLayout.Y_AXIS);
 		BoxLayout lay_hallo = new BoxLayout(p_hallo, BoxLayout.LINE_AXIS);
