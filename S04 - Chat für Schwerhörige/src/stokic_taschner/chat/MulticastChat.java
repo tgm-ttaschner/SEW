@@ -13,7 +13,7 @@ import java.util.Date;
  * Zusätzlich werden noch die Benutzername, ein Timestamp mitgeschickt und eventuell vorkommende Schimpfwörter durch * zensiert.
  *
  */
-public class MulticastChat implements MulticastConnection {
+public class MulticastChat implements ChatConnection {
 
 	private String username;
 	private String hostname;
@@ -38,7 +38,7 @@ public class MulticastChat implements MulticastConnection {
 	 * @param port der Port, an dem der Socket erstellt werden soll
 	 */
 	@Override
-	public void setupMulticastConnection(String username, String hostname, int port) {
+	public void setupChatConnection(String username, String hostname, int port) {
 
 		this.username = username;
 		this.hostname = hostname;
@@ -46,7 +46,7 @@ public class MulticastChat implements MulticastConnection {
 	}
 
 	@Override
-	public void startMulticastChat() {
+	public void startChat() {
 
 		try {
 
@@ -110,6 +110,6 @@ public class MulticastChat implements MulticastConnection {
 		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm:ss");
 
 		MulticastChat chat = new MulticastChat(dateFormat.format(new Date()), "224.1.2.3", 8888);
-		chat.startMulticastChat();
+		chat.startChat();
 	}
 }
