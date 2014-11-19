@@ -1,8 +1,6 @@
 package stokic_taschner.gui;
 
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
@@ -17,67 +15,95 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class MultiCastChatMenu extends JPanel implements ActionListener {
 	
-	JFrame f = new JFrame();
+	JFrame f_menu, f_chat;
+	
+	JPanel p_hallo, p_username, p_login, p_buttons, p_client, p_chat, p_input;
+	
+	JLabel l_hallo, l_username, l_login;
+	
+	JTextField tf_username, tf_login, tf_input, tf_output;
+	
+	JButton b_connect, b_help, b_send;
 	
 	public MultiCastChatMenu() {
 		
+		f_menu = new JFrame("Chat Client Menü");
 		
+		this.addMenuContents();
 		
-		this.addContents();
-		
-		f.setTitle("Chat Client Menü");
-		
-		f.setSize(320, 480);
-		f.setVisible(true);
-		f.setLocationRelativeTo(null);
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.add(this);
+		f_menu.setSize(320, 480);
+		f_menu.setVisible(true);
+		f_menu.setLocationRelativeTo(null);
+		f_menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 	
-	public void addContents() {
+	public void addMenuContents() {
 		
-		JLabel l_hallo = new JLabel("Herzlich Willkommen");
+		p_hallo = new JPanel();
+		l_hallo = new JLabel("Herzlich Willkommen");
 		
-		JLabel l_username = new JLabel("Benutzername");
-		JTextField tf_username = new JTextField();
+		p_username = new JPanel();
+		l_username = new JLabel("Benutzername");
+		tf_username = new JTextField();
 		
-		JLabel l_login = new JLabel("IP:Port");
-		JTextField tf_login = new JTextField();
+		p_login = new JPanel();
+		l_login = new JLabel("IP:Port");
+		tf_login = new JTextField();
 		
-		JButton b_connect = new JButton("Connect");
+		p_buttons = new JPanel();
+		b_connect = new JButton("Connect");
 		b_connect.addActionListener(this);
 		
-		JButton b_help = new JButton("Help");
+		b_help = new JButton("Help");
 		b_help.addActionListener(this);
 		
 		
-		BoxLayout l = new BoxLayout(this, BoxLayout.Y_AXIS);
 		
 		
+		BoxLayout lay_main = new BoxLayout(this, BoxLayout.Y_AXIS);
+		BoxLayout lay_hallo = new BoxLayout(p_hallo, BoxLayout.LINE_AXIS);
+		BoxLayout lay_username = new BoxLayout(p_username, BoxLayout.PAGE_AXIS);
+		BoxLayout lay_login = new BoxLayout(p_login, BoxLayout.Y_AXIS);
+		FlowLayout lay_buttons = new FlowLayout();
+	
+		p_hallo.setLayout(lay_hallo);
+		p_username.setLayout(lay_username);
+		p_login.setLayout(lay_login);
+		p_buttons.setLayout(lay_buttons);
+		this.setLayout(lay_main);
 		
-		this.setLayout(l);
 		
-		this.add(l_hallo);
 		this.add(new JPanel());
-		this.add(l_username);
-		this.add(tf_username);
-		this.add(new JPanel());
-		this.add(l_login);
-		this.add(tf_login);
-		this.add(new JPanel());
+		p_hallo.add(l_hallo);
 		
-		this.add(b_connect);
-		this.add(b_help);
+		this.add(new JPanel());
+		p_username.add(l_username);
+		p_username.add(tf_username);
+		
+		this.add(new JPanel());
+		p_login.add(l_login);
+		p_login.add(tf_login);
+		
+		this.add(new JPanel());
+		p_buttons.add(b_connect);
+		p_buttons.add(b_help);
+		
+		this.add(new JPanel());
+		this.add(p_hallo);
+		this.add(p_username);
+		this.add(p_login);
+		this.add(p_buttons);
+		
+		f_menu.add(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton b = (JButton) e.getSource();
 		
-		
 		if (b.getText().equals("Connect"))	{
-			f.setVisible(false);
-			System.exit(0);
+			f_menu.setVisible(false);
+			new MultiCastChatClient();
 		}
 		
 		if (b.getText().equals("Help"))	{
@@ -86,6 +112,7 @@ public class MultiCastChatMenu extends JPanel implements ActionListener {
 		}
 	}
 	
+	@SuppressWarnings("unused")
 	public static void main(String[] args) {
 		MultiCastChatMenu m = new MultiCastChatMenu();
 	}
