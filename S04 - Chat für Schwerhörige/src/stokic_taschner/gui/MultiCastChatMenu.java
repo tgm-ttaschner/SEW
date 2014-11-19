@@ -111,9 +111,4 @@ public class MultiCastChatMenu extends JPanel implements ActionListener {
 			System.exit(0);
 		}
 	}
-	
-	@SuppressWarnings("unused")
-	public static void main(String[] args) {
-		MultiCastChatMenu m = new MultiCastChatMenu();
-	}
 }
