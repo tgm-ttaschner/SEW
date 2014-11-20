@@ -20,6 +20,9 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 	private MulticastChat mChat;
 	private static MultiCastChatClient instanceMultiCastChatClient = null;
 
+	private String username;
+	private String[] adresse;
+
 	public MultiCastChatClient()	{
 
 		instanceMultiCastChatClient = this;
@@ -27,12 +30,35 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 		f_chat = new JFrame("Chat Client Menü");
 
 
-		String username = MultiCastChatMenu.getInstance().getTf_username().getText();
-		String[] adresse = MultiCastChatMenu.getInstance().getTf_login().getText().split(":");
+		username = MultiCastChatMenu.getInstance().getTf_username().getText();
+		adresse = MultiCastChatMenu.getInstance().getTf_login().getText().split(":");
 
-		mChat = new MulticastChat(username, adresse[0], Integer.parseInt(adresse[1]));
-		mChat.startChat();
+		try {
+			mChat = new MulticastChat(username, adresse[0], Integer.parseInt(adresse[1]));
+		} catch (NumberFormatException e)	{
+			JOptionPane.showMessageDialog(null, "Geben Sie bitte einen gueltigen Port an!");
+			System.exit(1);
+		} catch (ArrayIndexOutOfBoundsException ex) {
+			JOptionPane.showMessageDialog(null, "Geben Sie bitte IP-Adresse:Port an!");
+			System.exit(1);
+		}
 
+		if (MulticastChat.validIP(adresse[0]))	{
+			if (Integer.parseInt(adresse[1]) >= 0 && Integer.parseInt(adresse[1]) <= 65536)	{
+				if (username != null && !username.isEmpty() && username.length() >= 2)	{
+					mChat.startChat();
+				} else {
+					JOptionPane.showMessageDialog(null, "Geben Sie bitte einen laengeren Namen (2 Zeichen oder mehr) ein!");
+					System.exit(1);
+				}
+			} else {
+				JOptionPane.showMessageDialog(null, "Geben Sie bitte einen gueltigen Port an! (0-65536)");
+				System.exit(1);
+			}
+		} else {
+			JOptionPane.showMessageDialog(null, "Geben Sie bitte eine gueltige IP-Adresse ein!");
+			System.exit(1);
+		}
 
 		f_chat.addWindowListener(new GUIWindowListener());
 		this.addChatContents();
@@ -75,11 +101,12 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 		JButton bSend = (JButton) e.getSource();
 
 		if (bSend.getText().equals("Senden"))	{
-
 			mChat.createMsg(this.tf_input.getText());
 			mChat.send();
 		}
 	}
+
+
 
 	public static MultiCastChatClient getInstance() {
 
