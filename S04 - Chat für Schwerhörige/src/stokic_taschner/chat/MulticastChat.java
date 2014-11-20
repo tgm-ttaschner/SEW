@@ -156,4 +156,37 @@ public class MulticastChat implements ChatConnection {
 			System.out.println("Error: " + e.getMessage());
 		}
 	}
+	
+	/**
+	 * @param ip die zu ueberpruefende IP-Adresse
+	 * @return true oder false, je nachdem, ob der Input einer gueltigen IP-Adresse entspricht
+	 * 
+	 * Entnommen von http://stackoverflow.com/questions/4581877/validating-ipv4-string-in-java, Antwort Nr. 2
+	 * 
+	 * Die Methode ueberprueft mit Hilfe von Regex, ob die mitgegebene Zeichenkette einer gueltigen IP-Adresse entspricht.
+	 * Zunaechst erfolgt eine Ueberpruefung, ob der Input nicht leer ist und 4 Zahlen, getrennt mit einem Punkt, zwischen 0 und 255, enthaelt.
+	 */
+	public static boolean validIP (String ip) {
+	    try {
+	        if (ip == null || ip.isEmpty()) {
+	            return false;
+	        }
+
+	        String[] parts = ip.split("\\.", -1);
+	        if ( parts.length != 4 ) {
+	            return false;
+	        }
+
+	        for ( String s : parts ) {
+	            int i = Integer.parseInt( s );
+	            if ( (i < 0) || (i > 255) ) {
+	                return false;
+	            }
+	        }
+
+	        return true;
+	    } catch (NumberFormatException nfe) {
+	        return false;
+	    }
+	}
 }
