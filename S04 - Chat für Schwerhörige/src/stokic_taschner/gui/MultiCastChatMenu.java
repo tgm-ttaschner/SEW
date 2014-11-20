@@ -10,8 +10,7 @@ import javax.swing.*;
  * @author Thomas Taschner
  * @version 18.11.2014
  * 
- * Die Klasse dient zur grafischen Darstellung eines Menüs des ChatClient. Hier kann der Benutzer einen Benutzernamen, IP-Adresse bzw. URL und einen Port angeben.
- * Es steht ebenfalls eine Hilfe zur Verfügung, die über einen Klick auf den entsprechenden Button aufgerufen werden kann.
+ * Die Klasse dient zur grafischen Darstellung eines Menues des ChatClient. Hier kann der Benutzer einen Benutzernamen, IP-Adresse bzw. URL und einen Port angeben.
  */
 @SuppressWarnings("serial")
 public class MultiCastChatMenu extends JPanel implements ActionListener {
