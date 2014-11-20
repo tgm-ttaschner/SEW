@@ -17,7 +17,12 @@ public class ChatListener implements Runnable {
 	private String hostname;
 	private int port;
 	private DatagramPacket receivedPacket;
+	private MulticastSocket mSocket;
 	
+	/**
+	 * @param hostname der Name des Hosts, auf dem der MulticastSocket laufen soll
+	 * @param port der Port, auf dem der Socket laufen soll
+	 */
 	public ChatListener(String hostname, int port) {
 		
 		this.hostname = hostname;
@@ -33,9 +38,9 @@ public class ChatListener implements Runnable {
 			InetAddress group = InetAddress.getByName(hostname);
 
 			// MulticastSocket an angegebenem Port wird erstellt
-			MulticastSocket mSocket = new MulticastSocket(port);
+			mSocket = new MulticastSocket(port);
 
-			// Socket wird einer Multicastgruppe hinzugefügt
+			// Socket wird einer Multicastgruppe hinzugefuegt
 			mSocket.joinGroup(group);
 
 			// Wiederhole unendlich lange
@@ -44,7 +49,7 @@ public class ChatListener implements Runnable {
 				// Array, in dem die zu empfangende Nachricht gespeichert werden soll, wird initialisiert
 				byte[] buf = new byte[256];
 
-				// Vorbereiten des Packets für die zu empfangende Nachricht
+				// Vorbereiten des Pakets fuer die zu empfangende Nachricht
 				receivedPacket = new DatagramPacket(buf, buf.length);
 
 				// Nachrichtenpaket wird empfangen
@@ -53,13 +58,8 @@ public class ChatListener implements Runnable {
 				// Empfangene Nachricht wird mit vorne und hinten entfernten Leerzeichen ausgegeben
 				MultiCastChatClient.getInstance().getTa_output().append(new String(receivedPacket.getData()).trim() + "\n");
 				
-				// Thread schläft für 20 Millisekunden
+				// Thread schlaeft fuer 20 Millisekunden
 				Thread.sleep(20);
-
-				/**
-				 * Auch hier gibts mit close() noch Probleme...
-				 */
-				//mSocket.close();
 			}
 
 		} catch(Exception e) {
