@@ -48,6 +48,13 @@ public class MulticastChat implements ChatConnection {
 	public String getUsername() {
 		return username;
 	}
+	
+	/**
+	 * @param username der Benutzername, der bei der Anmeldung verwendet wurde
+	 */
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
 	/**
 	 * @return der Name des Hosts, auf dem der MulticastSocket laufen soll
@@ -55,12 +62,26 @@ public class MulticastChat implements ChatConnection {
 	public String getHostname() {
 		return hostname;
 	}
+	
+	/**
+	 * @param hostname der Name des Hosts, auf dem der MulticastSocket laeuft
+	 */
+	public void setHostname(String hostname) {
+		this.hostname = hostname;
+	}
 
 	/**
 	 * @return der Port, auf dem der Socket laufen soll
 	 */
 	public int getPort() {
 		return port;
+	}
+	
+	/**
+	 * @param port der Port, auf dem der Socket laeuft
+	 */
+	public void setPort(int port) {
+		this.port = port;
 	}
 
 	/**
@@ -80,11 +101,27 @@ public class MulticastChat implements ChatConnection {
 	}
 
 	/**
+	 * @return die Adresse der Multicastgruppe, in der sich der Socket befindet
+	 */
+	public InetAddress getGroup() {
+		return group;
+	}
+
+	/**
+	 * @param group die Adresse der Multicastgruppe, in der sich der Socket befinden soll
+	 */
+	public void setGroup(InetAddress group) {
+		this.group = group;
+	}
+
+	
+
+	/**
 	 * Das Paket wird mit Daten befuellt und anschlieﬂend verschickt
 	 */
 	public void send() {
 
-		DatagramPacket sendPacket = new DatagramPacket(this.getMsg().getBytes(), this.getMsg().length(), group, this.getPort());
+		DatagramPacket sendPacket = new DatagramPacket(this.getMsg().getBytes(), this.getMsg().length(), this.getGroup(), this.getPort());
 		
 		try {
 			// Senden der Nachricht
