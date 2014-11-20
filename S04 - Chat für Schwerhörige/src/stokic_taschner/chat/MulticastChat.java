@@ -2,13 +2,16 @@ package stokic_taschner.chat;
 
 import java.io.*;
 import java.net.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * @author Stefan Stokic
+ * @author Thomas Taschner
  * @version 18112014
  * 
  * Dieses Programm soll einen Chatclient repräsentieren, der die Nachrichten der einzelnen Teilnehmen in CAPS LOCK Schreibweise (Großbuchstaben) an alle anderen Chatteilnehmer schickt.
- * Zusätzlich werden noch die Benutzername, ein Timestamp mitgeschickt und eventuell vorkommende Schimpfwörter durch * zensiert.
+ * Zusätzlich werden noch der Benutzername, ein Timestamp mitgeschickt und eventuell vorkommende Schimpfwörter durch * zensiert.
  *
  */
 public class MulticastChat implements ChatConnection {
@@ -38,51 +41,56 @@ public class MulticastChat implements ChatConnection {
 		this.hostname = hostname;
 		this.port = port;
 	}
-
+	
+	/**
+	 * @return der Benutzername, der bei der Anmeldung verwendet werden soll
+	 */
 	public String getUsername() {
 		return username;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
+	/**
+	 * @return der Name des Hosts, auf dem der MulticastSocket laufen soll
+	 */
 	public String getHostname() {
 		return hostname;
 	}
 
-	public void setHostname(String hostname) {
-		this.hostname = hostname;
-	}
-
+	/**
+	 * @return der Port, auf dem der Socket laufen soll
+	 */
 	public int getPort() {
 		return port;
 	}
 
-	public void setPort(int port) {
-		this.port = port;
+	/**
+	 * @return die Nachricht, die verschickt werden soll
+	 */
+	public String getMsg() {
+		return msg;
 	}
 
-	private String getMsg() {
-		return this.msg;
-	}
-
+	/**
+	 * @param msg die Nachricht, die verschickt werden soll
+	 * 
+	 * Die Nachricht wird mit weiteren Informationen erweitert
+	 */
 	public void createMsg(String msg) {
-
-		this.msg = username + ": " + msg;
+		this.msg = getUsername() + ", um " + new SimpleDateFormat("HH:mm:ss").format(new Date()) + " Uhr: " + msg;
 	}
 
+	/**
+	 * Das Paket wird mit Daten befuellt und anschließend verschickt
+	 */
 	public void send() {
 
-		DatagramPacket sendPacket = new DatagramPacket(this.getMsg().getBytes(), this.getMsg().length(), group, this.port);
-
-		// Senden der Nachricht
+		DatagramPacket sendPacket = new DatagramPacket(this.getMsg().getBytes(), this.getMsg().length(), group, this.getPort());
+		
 		try {
-
+			// Senden der Nachricht
 			mSocket.send(sendPacket);
 
 		} catch (IOException e) {
-
 			System.out.println("Error: " + e.getMessage());
 		}
 	}
@@ -106,16 +114,16 @@ public class MulticastChat implements ChatConnection {
 		try {
 
 			// IP-Adresse wird gespeichert
-			group = InetAddress.getByName(this.hostname);
+			group = InetAddress.getByName(this.getHostname());
 
 			// MulticastSocket an angegebenem Port wird erstellt
-			mSocket = new MulticastSocket(this.port);
+			mSocket = new MulticastSocket(this.getPort());
 
 			// Socket wird einer Multicastgruppe hinzugefügt
 			mSocket.joinGroup(group);
 
 			// Neuer ChatListener Thread wird erstellt und ausgeführt
-			Thread chatListenerThread = new Thread(new ChatListener(this.hostname, this.port));
+			Thread chatListenerThread = new Thread(new ChatListener(this.getHostname(), this.getPort()));
 
 			chatListenerThread.start();
 
@@ -135,6 +143,9 @@ public class MulticastChat implements ChatConnection {
 		}
 	}
 
+	/**
+	 * @return eine Instanz von MulticastChat
+	 */
 	public static MulticastChat getInstance() {
 
 		if(instanceMulticastChat == null)
@@ -143,6 +154,9 @@ public class MulticastChat implements ChatConnection {
 		return instanceMulticastChat;
 	}
 
+	/**
+	 * Der Socket verlaesst die Multicastgruppe und wird abschließend geschlossen.
+	 */
 	public void multicastLeaveGroup() {
 
 		try {
@@ -164,19 +178,23 @@ public class MulticastChat implements ChatConnection {
 	 * Entnommen von http://stackoverflow.com/questions/4581877/validating-ipv4-string-in-java, Antwort Nr. 2
 	 * 
 	 * Die Methode ueberprueft mit Hilfe von Regex, ob die mitgegebene Zeichenkette einer gueltigen IP-Adresse entspricht.
-	 * Zunaechst erfolgt eine Ueberpruefung, ob der Input nicht leer ist und 4 Zahlen, getrennt mit einem Punkt, zwischen 0 und 255, enthaelt.
+	 * Zunaechst erfolgt eine Ueberpruefung, ob der Input nicht leer ist und 4 Zahlen, jeweils getrennt mit einem Punkt, zwischen 0 und 255, enthaelt.
 	 */
 	public static boolean validIP (String ip) {
 	    try {
+	    	
+	    	// Check, ob String leer oder nicht
 	        if (ip == null || ip.isEmpty()) {
 	            return false;
 	        }
-
+	        
+	        // Vierteilung des Strings
 	        String[] parts = ip.split("\\.", -1);
 	        if ( parts.length != 4 ) {
 	            return false;
 	        }
-
+	        
+	        // Check, ob Zahlen zwischen 0 und 255 vorhanden sind
 	        for ( String s : parts ) {
 	            int i = Integer.parseInt( s );
 	            if ( (i < 0) || (i > 255) ) {
