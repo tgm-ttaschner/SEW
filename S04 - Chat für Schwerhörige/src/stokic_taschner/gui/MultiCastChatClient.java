@@ -5,25 +5,36 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import stokic_taschner.chat.MulticastChat;
+
 @SuppressWarnings("serial")
-public class MultiCastChatClient extends JPanel implements ActionListener	{
+public class MultiCastChatClient extends JPanel implements ActionListener {
 
-	JFrame f_chat;
+	private JFrame f_chat;
+	private JPanel p_chat, p_input;
+	private JScrollPane sp_output;
+	private JTextField tf_input;
+	private JTextArea ta_output;
+	private JButton b_send;
 
-	JPanel p_chat, p_input;
-
-	JScrollPane sp_output;
-
-	JTextField tf_input;
-
-	JTextArea ta_output;
-
-	JButton b_send;
+	private MulticastChat mChat;
+	private static MultiCastChatClient instanceMultiCastChatClient = null;
 
 	public MultiCastChatClient()	{
 
+		instanceMultiCastChatClient = this;
+
 		f_chat = new JFrame("Chat Client Menü");
 
+
+		String username = MultiCastChatMenu.getInstance().getTf_username().getText();
+		String[] adresse = MultiCastChatMenu.getInstance().getTf_login().getText().split(":");
+
+		mChat = new MulticastChat(username, adresse[0], Integer.parseInt(adresse[1]));
+		mChat.startChat();
+
+
+		f_chat.addWindowListener(new GUIWindowListener());
 		this.addChatContents();
 
 		f_chat.setSize(640, 480);
@@ -40,10 +51,8 @@ public class MultiCastChatClient extends JPanel implements ActionListener	{
 		p_input = new JPanel();
 
 		tf_input = new JTextField();
-		tf_input.setText("ewtpoughoizghogrsfi");
+		ta_output = new JTextArea();
 
-		ta_output = new JTextArea("reiwgffdsildsfh");
-		
 		sp_output = new JScrollPane(ta_output, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 		b_send = new JButton("Senden");
@@ -63,10 +72,25 @@ public class MultiCastChatClient extends JPanel implements ActionListener	{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JButton b = (JButton) e.getSource();
+		JButton bSend = (JButton) e.getSource();
 
-		if (b.getText().equals("Senden"))	{
-			ta_output.append(tf_input.getText() + "\n");
+		if (bSend.getText().equals("Senden"))	{
+
+			mChat.createMsg(this.tf_input.getText());
+			mChat.send();
 		}
+	}
+
+	public static MultiCastChatClient getInstance() {
+
+		if(instanceMultiCastChatClient == null)
+			instanceMultiCastChatClient = new MultiCastChatClient();
+
+		return instanceMultiCastChatClient;
+	}
+
+	public JTextArea getTa_output() {
+
+		return ta_output;
 	}
 }
