@@ -4,6 +4,8 @@ import java.net.DatagramPacket;
 import java.net.InetAddress;
 import java.net.MulticastSocket;
 
+import stokic_taschner.gui.MultiCastChatClient;
+
 /**
  * Eine Thread Klasse welche auf Nachrichten wartet und dementsprechend empfaengt und ausgibt.
  * 
@@ -14,6 +16,7 @@ public class ChatListener implements Runnable {
 
 	private String hostname;
 	private int port;
+	private DatagramPacket receivedPacket;
 	
 	public ChatListener(String hostname, int port) {
 		
@@ -42,14 +45,14 @@ public class ChatListener implements Runnable {
 				byte[] buf = new byte[256];
 
 				// Vorbereiten des Packets für die zu empfangende Nachricht
-				DatagramPacket receivedPacket = new DatagramPacket(buf, buf.length);
+				receivedPacket = new DatagramPacket(buf, buf.length);
 
 				// Nachrichtenpaket wird empfangen
 				mSocket.receive(receivedPacket);
 
 				// Empfangene Nachricht wird mit vorne und hinten entfernten Leerzeichen ausgegeben
-				System.out.println(new String(receivedPacket.getData()).trim());
-
+				MultiCastChatClient.getInstance().getTa_output().append(new String(receivedPacket.getData()).trim() + "\n");
+				
 				// Thread schläft für 20 Millisekunden
 				Thread.sleep(20);
 
