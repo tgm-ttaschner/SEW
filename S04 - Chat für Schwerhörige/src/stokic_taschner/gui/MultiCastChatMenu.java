@@ -15,17 +15,17 @@ import javax.swing.*;
 @SuppressWarnings("serial")
 public class MultiCastChatMenu extends JPanel implements ActionListener {
 	
-	JFrame f_menu;
+	private JFrame f_menu;
+	private JPanel p_hallo, p_username, p_login, p_buttons;
+	private JLabel l_hallo, l_username, l_login;
+	private JTextField tf_username, tf_login;
+	private JButton b_connect, b_help;
 	
-	JPanel p_hallo, p_username, p_login, p_buttons;
-	
-	JLabel l_hallo, l_username, l_login;
-	
-	JTextField tf_username, tf_login;
-	
-	JButton b_connect, b_help;
+	private static MultiCastChatMenu instanceMultiCastChatMenu = null;
 	
 	public MultiCastChatMenu() {
+		
+		instanceMultiCastChatMenu = this;
 		
 		f_menu = new JFrame("Chat Client Menü");
 		
@@ -107,5 +107,23 @@ public class MultiCastChatMenu extends JPanel implements ActionListener {
 			
 			System.exit(0);
 		}
+	}
+	
+	public JTextField getTf_username() {
+		
+		return tf_username;
+	}
+
+	public JTextField getTf_login() {
+		
+		return tf_login;
+	}
+
+	public static MultiCastChatMenu getInstance() {
+		
+		if(instanceMultiCastChatMenu == null)
+			instanceMultiCastChatMenu = new MultiCastChatMenu();
+		
+		return instanceMultiCastChatMenu;
 	}
 }
