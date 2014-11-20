@@ -7,6 +7,15 @@ import javax.swing.*;
 
 import stokic_taschner.chat.MulticastChat;
 
+/**
+ * @author Stefan Stokic
+ * @author Thomas Taschner
+ * @version 20.11.2014
+ * 
+ * Die Klasse repraesentiert einen Chat Client.
+ * Die Ausgabe der Nachrichten erfolgt in einem großen Ausgabepanel oben.
+ * Fuer die Eingabe stehen unten ein Textfeld und ein Senden Knopf zur Verfuegung.
+ */
 @SuppressWarnings("serial")
 public class MultiCastChatClient extends JPanel implements ActionListener {
 
@@ -23,16 +32,21 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 	private String username;
 	private String[] adresse;
 
+	/**
+	 * Konstruktor, der das JFrame initialisiert und die Benutzereingaben ueberprueft und der Chatvorgang gestartet.
+	 * Bei fehlerhaften Eingaben wird eine entsprechende Fehlermeldung ausgegeben.
+	 */
 	public MultiCastChatClient()	{
 
 		instanceMultiCastChatClient = this;
 
 		f_chat = new JFrame("Chat Client Menü");
 
-
+		
 		username = MultiCastChatMenu.getInstance().getTf_username().getText();
 		adresse = MultiCastChatMenu.getInstance().getTf_login().getText().split(":");
-
+		
+		// Initialisieren des Sockets mit den eingegebenen Daten
 		try {
 			mChat = new MulticastChat(username, adresse[0], Integer.parseInt(adresse[1]));
 		} catch (NumberFormatException e)	{
@@ -42,10 +56,17 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Geben Sie bitte IP-Adresse:Port an!");
 			System.exit(1);
 		}
-
+		
+		// Check, ob der String eine gueltige IP-Adresse beinhaltet
 		if (MulticastChat.validIP(adresse[0]))	{
+			
+			// Check, ob ein Port zwischen 0 und 65536 eingegeben wurde
 			if (Integer.parseInt(adresse[1]) >= 0 && Integer.parseInt(adresse[1]) <= 65536)	{
+				
+				// Check, ob der Benutzername nicht leer und laenger, als 2 Zeichen ist
 				if (username != null && !username.isEmpty() && username.length() >= 2)	{
+					
+					// Starten des ChatListeners
 					mChat.startChat();
 				} else {
 					JOptionPane.showMessageDialog(null, "Geben Sie bitte einen laengeren Namen (2 Zeichen oder mehr) ein!");
@@ -71,8 +92,12 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 
 	}
 
+	/**
+	 * GUI Elemente werden mir selber (JPanel) hinzugefuegt
+	 */
 	public void addChatContents()	{
-
+		
+		// Initialisierung der Elemente
 		p_chat = new JPanel();
 		p_input = new JPanel();
 
@@ -83,11 +108,13 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 
 		b_send = new JButton("Senden");
 		b_send.addActionListener(this);
-
+		
+		// Setzen der Layouts der JPanel
 		this.setLayout(new BorderLayout());
 		p_chat.setLayout(new BorderLayout());
 		p_input.setLayout(new BorderLayout());
-
+		
+		// // Hinzufuegen der Elemente
 		p_chat.add(sp_output);
 		p_input.add(tf_input);
 		p_input.add(b_send, BorderLayout.EAST);
@@ -99,15 +126,17 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton bSend = (JButton) e.getSource();
-
+		
+		// Sobald Senden gedrueckt wurde, wird der eingegebe Text des Eingabefeldes dekoriert und an den Socket gesendet
 		if (bSend.getText().equals("Senden"))	{
-			mChat.createMsg(this.tf_input.getText());
+			mChat.createMsg(tf_input.getText());
 			mChat.send();
 		}
 	}
 
-
-
+	/**
+	 * @return eine Instanz von MultiCastChatClient
+	 */
 	public static MultiCastChatClient getInstance() {
 
 		if(instanceMultiCastChatClient == null)
@@ -116,6 +145,9 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 		return instanceMultiCastChatClient;
 	}
 
+	/**
+	 * @return das Textfeld, in dem der Output ausgegeben wird
+	 */
 	public JTextArea getTa_output() {
 
 		return ta_output;
