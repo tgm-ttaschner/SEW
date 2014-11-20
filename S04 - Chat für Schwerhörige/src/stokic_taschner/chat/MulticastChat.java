@@ -18,12 +18,21 @@ public class MulticastChat implements ChatConnection {
 	private int port;
 	private String msg = "";
 
+	private InetAddress group;
+	private MulticastSocket mSocket;
+
+	private static MulticastChat instanceMulticastChat = null;
+
+	protected MulticastChat() {}
+
 	/**
 	 * @param username der Benutzername, der beim Versenden der Nachrichten im Chat angezeigt werden soll
 	 * @param hostname die Adresse des Multicastnetzes, an dem der Socket erstellt werden soll
 	 * @param port der Port, an dem der Socket erstellt werden soll
 	 */
 	public MulticastChat(String username, String hostname, int port) {
+
+		instanceMulticastChat = this;
 
 		this.username = username;
 		this.hostname = hostname;
@@ -54,12 +63,28 @@ public class MulticastChat implements ChatConnection {
 		this.port = port;
 	}
 
-	public String getMsg() {
-		return msg;
+	private String getMsg() {
+		return this.msg;
 	}
 
-	public void setMsg(String msg) {
-		this.msg = msg;
+	public void createMsg(String msg) {
+
+		this.msg = username + ": " + msg;
+	}
+
+	public void send() {
+
+		DatagramPacket sendPacket = new DatagramPacket(this.getMsg().getBytes(), this.getMsg().length(), group, this.port);
+
+		// Senden der Nachricht
+		try {
+
+			mSocket.send(sendPacket);
+
+		} catch (IOException e) {
+
+			System.out.println("Error: " + e.getMessage());
+		}
 	}
 
 	/**
@@ -81,10 +106,10 @@ public class MulticastChat implements ChatConnection {
 		try {
 
 			// IP-Adresse wird gespeichert
-			InetAddress group = InetAddress.getByName(this.hostname);
+			group = InetAddress.getByName(this.hostname);
 
 			// MulticastSocket an angegebenem Port wird erstellt
-			MulticastSocket mSocket = new MulticastSocket(this.port);
+			mSocket = new MulticastSocket(this.port);
 
 			// Socket wird einer Multicastgruppe hinzugefügt
 			mSocket.joinGroup(group);
@@ -94,30 +119,9 @@ public class MulticastChat implements ChatConnection {
 
 			chatListenerThread.start();
 
-			// Konsoleninput wird gespeichert
-			BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-
-			// Wiederhole, solange nicht 'QUIT' eingegeben wird
-			while(!(msg.equals("QUIT"))) {
-
-				// Als Nachricht werden Benutzername: Nachricht gespeichert
-				msg = username + ": " + in.readLine();
-
-				// Sollte die Nachricht 'QUIT' entsprechen, so wird das Programm terminiert, andernfalls wird die Nachricht in ein Paket verpackt und an gegebene Adresse geschickt.
-				if(!(msg.equals("QUIT"))) {
-
-					// Verpacken und adressieren der Nachricht
-					DatagramPacket sendPacket = new DatagramPacket(msg.getBytes(), msg.length(), group, this.port);
-
-					// Senden der Nachricht
-					mSocket.send(sendPacket);
-				} else {
-					System.exit(0);
-				}
-			}
-
+			// Wenn fenster geschlossen sollte dies aufgerufen werden
 			// Socket verlässt die Multicastgruppe
-			mSocket.leaveGroup(group);
+			// mSocket.leaveGroup(group);
 
 			/**
 			 * Mit close gibts noch Probleme...
@@ -129,5 +133,27 @@ public class MulticastChat implements ChatConnection {
 			// Ausgabe der Fehlermeldung
 			System.out.println("Error: " + e.getMessage());
 		}
-	} 
+	}
+
+	public static MulticastChat getInstance() {
+
+		if(instanceMulticastChat == null)
+			instanceMulticastChat = new MulticastChat();
+
+		return instanceMulticastChat;
+	}
+
+	public void multicastLeaveGroup() {
+
+		try {
+			
+			mSocket.leaveGroup(group);
+			mSocket.close();
+			
+		} catch (IOException e) {
+
+			// Ausgabe der Fehlermeldung
+			System.out.println("Error: " + e.getMessage());
+		}
+	}
 }
