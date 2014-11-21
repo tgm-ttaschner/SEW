@@ -55,7 +55,11 @@ public class BadwordFilteredMessage extends TypeMessage {
 					s[i] = "$%&*";
 				}
 			}
-			message += s[i] + " ";
+			message += s[i];
+			
+			if (i != s.length-1)	{
+				message += " ";
+			}
 		}
 		return message;
 	}
