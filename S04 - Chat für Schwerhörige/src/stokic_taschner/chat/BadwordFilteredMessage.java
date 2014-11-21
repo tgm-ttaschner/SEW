@@ -16,15 +16,23 @@ public class BadwordFilteredMessage extends TypeMessage {
 
 	public String createMessage() {
 
-		return applyFilter(getTypeMessage().createMessage());
+		return applyFilter(getTypeMessage().createMessage().toUpperCase());
 	}
 
 	public String applyFilter(String message)	{
 		for (int i = 0; i < badwords.size(); i++)	{
 			if (message.equalsIgnoreCase(badwords.get(i)))	{
-				return message.replace(message, "***");
+				return message.replace(message, this.charCount(message.length()));
 			}
 		}
 		return message;
+	}
+
+	public String charCount(int length)	{
+		String s = "";
+		for (int i = 0; i < length; i++)	{
+			s += "*";
+		}
+		return s;
 	}
 }
