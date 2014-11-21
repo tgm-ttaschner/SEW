@@ -3,7 +3,7 @@ package stokic_taschner.chat;
 /**
  * @author Stefan Stokic
  * 
- * Abstrakte Message Klasse, mit einer Getter- und Setter-Methode der zu sendende Nachricht
+ * Abstrakte Message Klasse mit einer Getter- und Setter-Methode der zu sendenden Nachricht
  *
  */
 public abstract class Message {
