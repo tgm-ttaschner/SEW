@@ -102,6 +102,8 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 		p_input = new JPanel();
 
 		tf_input = new JTextField();
+		tf_input.addKeyListener(new EnterListener());
+		
 		ta_output = new JTextArea();
 
 		sp_output = new JScrollPane(ta_output, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -147,7 +149,6 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 				mChat.createMsg(capsedMessage.createMessage());
 			}
 			
-			//mChat.createMsg(tf_input.getText());
 			mChat.send();
 		}
 	}
@@ -167,7 +168,13 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 	 * @return das Textfeld, in dem der Output ausgegeben wird
 	 */
 	public JTextArea getTa_output() {
-
 		return ta_output;
+	}
+
+	/**
+	 * @return der Senden Button des Chat Fensters
+	 */
+	public JButton getB_send() {
+		return b_send;
 	}
 }
