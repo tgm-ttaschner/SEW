@@ -5,7 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-import stokic_taschner.chat.MulticastChat;
+import stokic_taschner.chat.*;
 
 /**
  * @author Stefan Stokic
@@ -129,6 +129,25 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 		
 		// Sobald Senden gedrueckt wurde, wird der eingegebe Text des Eingabefeldes dekoriert und an den Socket gesendet
 		if (bSend.getText().equals("Senden"))	{
+			
+			/** CapsedMessage - Anfang */
+//			Message chatMessage = new ChatMessage();
+//			CapsedMessage capsedMessage = new CapsedMessage(chatMessage);
+//			
+//			chatMessage.setMessage(tf_input.getText());
+//			
+//			mChat.createMsg(capsedMessage.createMessage());
+			/** CapsedMessage - Ende */
+			
+			/** BadwordFilteredMessage - Anfang */
+//			Message chatMessage = new ChatMessage();
+//			BadwordFilteredMessage filteredMessage = new BadwordFilteredMessage(chatMessage);
+//			
+//			chatMessage.setMessage(tf_input.getText());
+//			
+//			mChat.createMsg(filteredMessage.createMessage());
+			/** BadwordFilteredMessage - Ende */
+			
 			mChat.createMsg(tf_input.getText());
 			mChat.send();
 		}
