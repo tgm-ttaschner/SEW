@@ -205,6 +205,8 @@ public class MulticastChat implements ChatConnection {
 
 			// Ausgabe der Fehlermeldung
 			System.out.println("Error: " + e.getMessage());
+		} catch (NullPointerException ex)	{
+			System.out.println("Error: " + ex.getMessage());
 		}
 	}
 	
