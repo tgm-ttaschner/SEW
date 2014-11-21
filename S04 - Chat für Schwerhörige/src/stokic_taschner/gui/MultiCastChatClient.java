@@ -105,6 +105,7 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 		tf_input.addKeyListener(new EnterListener());
 
 		ta_output = new JTextArea();
+		ta_output.setEditable(false);
 
 		sp_output = new JScrollPane(ta_output, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
