@@ -19,7 +19,7 @@ public class MultiCastChatMenu extends JPanel implements ActionListener {
 	private JPanel p_hallo, p_username, p_login, p_buttons;
 	private JLabel l_hallo, l_username, l_login;
 	private JTextField tf_username, tf_login;
-	private JButton b_connect;
+	private JButton b_connect, b_help;
 	private JCheckBox cb_censor;
 
 	private static MultiCastChatMenu instanceMultiCastChatMenu = null;
@@ -37,6 +37,7 @@ public class MultiCastChatMenu extends JPanel implements ActionListener {
 
 		f_menu.setSize(320, 480);
 		f_menu.setVisible(true);
+		f_menu.setResizable(false);
 		f_menu.setLocationRelativeTo(null);
 		f_menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
@@ -59,8 +60,10 @@ public class MultiCastChatMenu extends JPanel implements ActionListener {
 		tf_login = new JTextField();
 
 		p_buttons = new JPanel();
+		b_help = new JButton("Help");
 		b_connect = new JButton("Connect");
 		cb_censor = new JCheckBox("Zensieren aus");
+		b_help.addActionListener(this);
 		b_connect.addActionListener(this);
 		cb_censor.addActionListener(this);
 
@@ -91,6 +94,7 @@ public class MultiCastChatMenu extends JPanel implements ActionListener {
 		p_login.add(tf_login);
 
 		this.add(new JPanel());
+		p_buttons.add(b_help);
 		p_buttons.add(b_connect);
 		p_buttons.add(cb_censor);
 
@@ -106,13 +110,24 @@ public class MultiCastChatMenu extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (e.getSource().equals(b_connect))	{
+		if (e.getSource().equals(b_connect) || e.getSource().equals(b_help))	{
 			JButton b = (JButton) e.getSource();
 
 			// Hauptmenue wird auf Knopfdruck unsichtbar und ein Chatfenster ploppt auf
 			if (b.getText().equals("Connect"))	{
 				f_menu.setVisible(false);
 				new MultiCastChatClient();
+			}
+			
+			// JOptionFrame mit zusaetzlicher Hilfe wird angezeigt
+			if (b.getText().equals("Help"))	{
+				JOptionPane.showMessageDialog(f_menu, "Herzlich Willkommen zur Chat Client Hilfe:\n"
+						+ "Geben Sie im 1. Feld den Namen ein, der im Chatfenster erscheinen soll.\n"
+						+ "Geben Sie im 2. Feld die IP-Adresse des Multicastnetzes (224.0.0.0 - 239.255.255.255)\n"
+						+ "und eine, mit einem : getrennte, gueltige, im Idealfall auch freie, Portnummer (0 - 65535) an\n"
+						+ "Ein Beispielaufruf koente so aussehen:\n"
+						+ "max549876\n"
+						+ "224.1.2.3:1234");
 			}
 		}
 		
