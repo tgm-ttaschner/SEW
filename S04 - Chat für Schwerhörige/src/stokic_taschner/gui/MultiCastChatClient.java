@@ -130,25 +130,24 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 		// Sobald Senden gedrueckt wurde, wird der eingegebe Text des Eingabefeldes dekoriert und an den Socket gesendet
 		if (bSend.getText().equals("Senden"))	{
 			
-			/** CapsedMessage - Anfang */
-//			Message chatMessage = new ChatMessage();
-//			CapsedMessage capsedMessage = new CapsedMessage(chatMessage);
-//			
-//			chatMessage.setMessage(tf_input.getText());
-//			
-//			mChat.createMsg(capsedMessage.createMessage());
-			/** CapsedMessage - Ende */
+			// Wenn die Checkbox ausgewaehlt wurde, werden nur CapsLock Nachrichten verschickt, andernfalls zensierte CapsLock Nachrichten
+			if (MultiCastChatMenu.getInstance().getCb_censor().isSelected())	{
+				Message cchatMessage = new ChatMessage();
+				BadwordFilteredMessage filteredMessage = new BadwordFilteredMessage(cchatMessage);
+				
+				cchatMessage.setMessage(tf_input.getText());
+				
+				mChat.createMsg(filteredMessage.createMessage());
+			} else {
+				Message chatMessage = new ChatMessage();
+				CapsedMessage capsedMessage = new CapsedMessage(chatMessage);
+				
+				chatMessage.setMessage(tf_input.getText());
+				
+				mChat.createMsg(capsedMessage.createMessage());
+			}
 			
-			/** BadwordFilteredMessage - Anfang */
-//			Message chatMessage = new ChatMessage();
-//			BadwordFilteredMessage filteredMessage = new BadwordFilteredMessage(chatMessage);
-//			
-//			chatMessage.setMessage(tf_input.getText());
-//			
-//			mChat.createMsg(filteredMessage.createMessage());
-			/** BadwordFilteredMessage - Ende */
-			
-			mChat.createMsg(tf_input.getText());
+			//mChat.createMsg(tf_input.getText());
 			mChat.send();
 		}
 	}
