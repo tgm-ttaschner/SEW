@@ -42,10 +42,10 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 
 		f_chat = new JFrame("Chat Client Menü");
 
-		
+
 		username = MultiCastChatMenu.getInstance().getTf_username().getText();
 		adresse = MultiCastChatMenu.getInstance().getTf_login().getText().split(":");
-		
+
 		// Initialisieren des Sockets mit den eingegebenen Daten
 		try {
 			mChat = new MulticastChat(username, adresse[0], Integer.parseInt(adresse[1]));
@@ -56,16 +56,16 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 			JOptionPane.showMessageDialog(null, "Geben Sie bitte IP-Adresse:Port an!");
 			System.exit(1);
 		}
-		
-		// Check, ob der String eine gueltige IP-Adresse beinhaltet
-		if (MulticastChat.validIP(adresse[0]))	{
-			
-			// Check, ob ein Port zwischen 0 und 65536 eingegeben wurde
-			if (Integer.parseInt(adresse[1]) >= 0 && Integer.parseInt(adresse[1]) <= 65536)	{
-				
+
+		// Check, ob der String eine gueltige Multicast IP-Adresse beinhaltet
+		if (MulticastChat.validIP(adresse[0]) && Integer.parseInt(adresse[0].substring(0, 3)) >= 224 && Integer.parseInt(adresse[0].substring(0, 3)) <= 239)	{
+
+			// Check, ob ein Port zwischen 0 und 65535 eingegeben wurde
+			if (Integer.parseInt(adresse[1]) >= 0 && Integer.parseInt(adresse[1]) <= 65535)	{
+
 				// Check, ob der Benutzername nicht leer und laenger, als 2 Zeichen ist
 				if (username != null && !username.isEmpty() && username.length() >= 2)	{
-					
+
 					// Starten des ChatListeners
 					mChat.startChat();
 				} else {
@@ -73,11 +73,11 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 					System.exit(1);
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Geben Sie bitte einen gueltigen Port an! (0-65536)");
+				JOptionPane.showMessageDialog(null, "Geben Sie bitte einen gueltigen Port an! (0-65535)");
 				System.exit(1);
 			}
 		} else {
-			JOptionPane.showMessageDialog(null, "Geben Sie bitte eine gueltige IP-Adresse ein!");
+			JOptionPane.showMessageDialog(null, "Geben Sie bitte eine gueltige IP-Adresse (224.0.0.0 - 239.255.255.255) ein!");
 			System.exit(1);
 		}
 
@@ -96,26 +96,26 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 	 * GUI Elemente werden mir selber (JPanel) hinzugefuegt
 	 */
 	public void addChatContents()	{
-		
+
 		// Initialisierung der Elemente
 		p_chat = new JPanel();
 		p_input = new JPanel();
 
 		tf_input = new JTextField();
 		tf_input.addKeyListener(new EnterListener());
-		
+
 		ta_output = new JTextArea();
 
 		sp_output = new JScrollPane(ta_output, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 		b_send = new JButton("Senden");
 		b_send.addActionListener(this);
-		
+
 		// Setzen der Layouts der JPanel
 		this.setLayout(new BorderLayout());
 		p_chat.setLayout(new BorderLayout());
 		p_input.setLayout(new BorderLayout());
-		
+
 		// // Hinzufuegen der Elemente
 		p_chat.add(sp_output);
 		p_input.add(tf_input);
@@ -128,28 +128,32 @@ public class MultiCastChatClient extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton bSend = (JButton) e.getSource();
-		
+
 		// Sobald Senden gedrueckt wurde, wird der eingegebe Text des Eingabefeldes dekoriert und an den Socket gesendet
 		if (bSend.getText().equals("Senden"))	{
-			
-			// Wenn die Checkbox ausgewaehlt wurde, werden nur CapsLock Nachrichten verschickt, andernfalls zensierte CapsLock Nachrichten
-			if (MultiCastChatMenu.getInstance().getCb_censor().isSelected())	{
-				Message cchatMessage = new ChatMessage();
-				BadwordFilteredMessage filteredMessage = new BadwordFilteredMessage(cchatMessage);
-				
-				cchatMessage.setMessage(tf_input.getText());
-				
-				mChat.createMsg(filteredMessage.createMessage());
-			} else {
-				Message chatMessage = new ChatMessage();
-				CapsedMessage capsedMessage = new CapsedMessage(chatMessage);
-				
-				chatMessage.setMessage(tf_input.getText());
-				
-				mChat.createMsg(capsedMessage.createMessage());
+			if (tf_input.getText() != null && !tf_input.getText().isEmpty())	{
+
+				// Wenn die Checkbox ausgewaehlt wurde, werden nur CapsLock Nachrichten verschickt, andernfalls zensierte CapsLock Nachrichten
+				if (MultiCastChatMenu.getInstance().getCb_censor().isSelected())	{
+					Message cchatMessage = new ChatMessage();
+					BadwordFilteredMessage filteredMessage = new BadwordFilteredMessage(cchatMessage);
+
+					cchatMessage.setMessage(tf_input.getText());
+
+					mChat.createMsg(filteredMessage.createMessage());
+				} else {
+					Message chatMessage = new ChatMessage();
+					CapsedMessage capsedMessage = new CapsedMessage(chatMessage);
+
+					chatMessage.setMessage(tf_input.getText());
+
+					mChat.createMsg(capsedMessage.createMessage());
+				}
+
+				mChat.send();
+
+				tf_input.setText("");
 			}
-			
-			mChat.send();
 		}
 	}
 
