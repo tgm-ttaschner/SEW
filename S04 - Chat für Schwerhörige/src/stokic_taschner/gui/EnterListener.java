@@ -1,8 +1,6 @@
-package stokic_taschner.chat;
+package stokic_taschner.gui;
 
 import java.awt.event.*;
-
-import stokic_taschner.gui.MultiCastChatClient;
 
 /**
  * @author Thomas Taschner
