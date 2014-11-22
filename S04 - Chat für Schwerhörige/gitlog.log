@@ -1,0 +1,513 @@
+commit 6b64565b556faf4cd4519fad809207fb84cbde51
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Sat Nov 22 14:51:20 2014 +0100
+
+    + Added Javadoc in doc
+
+commit 3c52d625ef1554f8ca124cf9955764d0d263cc28
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Sat Nov 22 14:49:51 2014 +0100
+
+    + Added pdf version of the procotol
+
+commit 1b7bc5f7a72b2ab8b8df6b42f0892ef422bb2dd1
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Sat Nov 22 14:49:17 2014 +0100
+
+    ~ Updated UML
+
+commit f87f1de103b20d823f96f95888cac9f13b1ba2e1
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Sat Nov 22 14:48:30 2014 +0100
+
+    + Added some stuff
+
+commit eb556cdbe9545094fb2b8c9dcd9f648dcd433ccb
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Sat Nov 22 13:43:38 2014 +0100
+
+    EnterListener:
+    
+    ~ Moved EnterListener from stokic_taschner/chat to stokic_taschner/gui
+
+commit 3f7826b1d6f8aadb1a2d401f12fe4c908c31b9a7
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Sat Nov 22 13:08:02 2014 +0100
+
+    Protokoll hinzufuegt
+
+commit 562012181c8398db386bf0a659961d17e3e5f6ee
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 22:40:49 2014 +0100
+
+    + Added some more test cases
+
+commit 026961751fd0eee8099581947a0fb760ba82cbe2
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 22:11:45 2014 +0100
+
+    ~ Fixed bug where a whitespace would be added to the last word
+
+commit 40b8a70fa1d596e7b16a2dba70bafb711a49e8c6
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 21:05:07 2014 +0100
+
+    + Caught NullPointerException
+
+commit 6592096b4e40ef5920bc0a8ce386e8abe9491349
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 20:45:55 2014 +0100
+
+    + Added some test cases
+
+commit 5262070413cd3eb8c270d5e0fbde048bc57e6eed
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 19:11:34 2014 +0100
+
+    MultiCastChatClient:
+    
+    Forgot to set TextArea.setEditable(false) ^^
+
+commit 02e065b95d110c6d07024cfc6308ee586657ce6b
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 19:04:46 2014 +0100
+
+    MultiCastChatClient:
+    
+    + Added some more additional checks if entered IP-Address is a Multicast
+    Address
+    
+    ~ Text is now being delted from the input text field after the message
+    has been sent
+    
+    ~ The text field now has to contain at least one character, no empty
+    messages anymore
+    
+    ~ Output text area is read-only now
+
+commit 6b11fd1a3a459ebc61a09233a9c1a8ab287b38bc
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 19:04:23 2014 +0100
+
+    MultiCastChatMenu:
+    
+    + Added help button button (again)
+    + Added help
+    + Added some more commentary
+    
+    ~ Menu cannot be resized anymore
+
+commit ae781fe82e51bebfc8909950ff87c64f1874d3b9
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 18:17:35 2014 +0100
+
+    TypeMessage:
+    
+    + Added commentary
+
+commit eef241367f678cbfed6d4f8e891961f2d149bad7
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 18:16:59 2014 +0100
+
+    Message:
+    
+    ~ Fixed a typo
+
+commit b22621dda97a5e01e179ffa8e9b56588258299ad
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 18:15:17 2014 +0100
+
+    Message:
+    
+    + Added commentary
+
+commit 4a1641e483b15104af483fedd42fd041628589f0
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 18:14:56 2014 +0100
+
+    ChatMessage:
+    
+    + Added commentary
+
+commit 18aaa73bf0303ee8d03104243fa3ba47a7c7c392
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 17:51:42 2014 +0100
+
+    CapsedMessage:
+    
+    + Added commentary
+
+commit cfe502bdbc51af56281988d1257b1141b90c1cfa
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 17:44:53 2014 +0100
+
+    BadwordFilteredMessage:
+    
+    + Added some more commentary
+    
+    ~ Improved bad word detection
+    
+    - Removed charCount
+
+commit ff97367d79b7522ac8556274c30cfb9a295d6028
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 15:04:52 2014 +0100
+
+    + Added setter for b_send
+    + Added EnterListener functionality to tf_input
+
+commit 9ee819f3563513263442d20150578cc16236c45f
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 15:03:55 2014 +0100
+
+    + Implemented EnterListener
+
+commit 7e3616559602522c53f7fb00515fa19495d34f59
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 13:12:54 2014 +0100
+
+    + Added getters and setters for checkbox
+    + Added check if checkbox is checked or not
+    + Added some more commentary in MultiCastChatMenu
+
+commit c65b8f09fa9817ed757ed6ee4e61a507b806a1a8
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 13:06:38 2014 +0100
+
+    + Added check if checkbox got checked
+    + Added some more commentary
+
+commit d637a911ee8bc7b10ff641a5958e2bdf87f30fec
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Fri Nov 21 12:59:23 2014 +0100
+
+    + Added proper censoring method
+    
+    ~ Applied proper censor method to applyFilter
+
+commit 5497d081b2a4a37c4859692289d0388931f6d2ac
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Fri Nov 21 11:09:16 2014 +0100
+
+    TypeMessage added
+
+commit f24c19454d04303ae136a26c9c306431824aadfe
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Fri Nov 21 11:08:09 2014 +0100
+
+    Message class added
+
+commit f1b4efdc6504e86afbf4382e4494da1c1c6769d1
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Fri Nov 21 11:07:37 2014 +0100
+
+    Normal chat message added
+
+commit 0286b9214c69cd563f55872fbf417ea91026d79d
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Fri Nov 21 11:06:52 2014 +0100
+
+    Capsed message creator added
+
+commit aba602383e6f0ac35787d712fe4cbf382acdbdc6
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Fri Nov 21 11:06:13 2014 +0100
+
+    Badword filter added
+
+commit 418588aa00a2b569a5c55ec5aa72ebd1c9681552
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Fri Nov 21 11:05:42 2014 +0100
+
+    added code snippets for using, capsed and censored messages
+
+commit 0d66b128dbd6a20dbe2fcae2f9382699a74b228a
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 22:58:12 2014 +0100
+
+    + Added stokic_taschner.testing (again)
+    + Added ChatTest (for test cases) in stokic_taschner.testing
+
+commit c7632797fd136cd05716db214b52f44051acfe74
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 22:56:44 2014 +0100
+
+    + Added commentary for MultiCastChatClient
+
+commit 14d0ce38296a01dce799e24bca4de41da505b982
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 22:44:12 2014 +0100
+
+    - Removed some commentary
+
+commit b429360db3fe3faa6b5ceab22225c52f66c823e1
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 22:40:05 2014 +0100
+
+    + Added commentary for MultiCastChatMenu
+    
+    - Removed help button
+
+commit 276e8c516a7c454cacb599fd8b414e91988aa1ff
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 22:29:24 2014 +0100
+
+    + Added setter methods back again
+    + Added getters and setters for group
+    
+    ~ Minor code change (use of getter instead of calling the variable
+    itself)
+
+commit ef428d10d107c9496aa72d75ead07d403268724c
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 22:22:05 2014 +0100
+
+    + Added additional commentary for MulticastChat
+    
+    ~ Code cleanup
+    
+    - Removed some unnecessary methods (setters)
+
+commit a090efbab720dd4544bb3dfb6abc26fbaedc98eb
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 21:42:46 2014 +0100
+
+    ~ Moved a variable up
+    
+    - Removed some code marked as a comment
+
+commit 7bfe7a86e9805bb415f40dfc40077ae2571b258c
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 21:26:30 2014 +0100
+
+    + Added commentary for ChatConnection
+
+commit 6ceaf73352cd0d433abbed8769132da409bbfc3a
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 21:23:24 2014 +0100
+
+    + Added commentary for Main
+
+commit b3bf63094f5aa9911cda28ff0190d7fd86edda2c
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 18:12:48 2014 +0100
+
+    + Added several checks to make the GUI more stable
+
+commit 31f98b3a095f8819eba2cfbd16a68422bb406a78
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 18:10:42 2014 +0100
+
+    + Added validIP check in MultiCast
+    + Added some commentary in MultiCast
+
+commit 958ad687b9405e139adb77a2fb38e8d4ffa58492
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Thu Nov 20 16:41:28 2014 +0100
+
+    + Added commentary for GUIWindowListener
+
+commit 61543e07e3f238271b47ca5a23068ac957bce888
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Thu Nov 20 15:20:44 2014 +0100
+
+    implemented functionality
+
+commit fe0d25a404daff0195978a9339bd89c3c690634c
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Thu Nov 20 15:20:11 2014 +0100
+
+    implemented functionality
+
+commit 0e7c80ea8b97dcfb02082aa1ef7337e348c5e6ef
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Thu Nov 20 15:19:18 2014 +0100
+
+    inputed messages by user are sent as a packet
+
+commit b04c58f4aaf9fbc48510355c61a11d7167c70740
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Thu Nov 20 15:18:07 2014 +0100
+
+    received packets sent to the JTextArea
+
+commit 405bc87048df769b434ced7e09ecc8a6982e7c67
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Thu Nov 20 15:16:56 2014 +0100
+
+    WindowListener implemented
+
+commit d13b0fa1fc052f5433cd25f94514c1758c0639ea
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Wed Nov 19 20:18:56 2014 +0100
+
+    + Added getters and setters
+
+commit bd339b45be151391c367ae40624a1bd7fd9d69f2
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Wed Nov 19 20:02:49 2014 +0100
+
+    - Removed unnecessary imports
+    - Removed main method
+
+commit 8ea8fb03d93d2fe516fb48424dc48858067ce970
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Wed Nov 19 18:03:02 2014 +0100
+
+    + Added JScrollPane
+    
+    ~ GUI Elements now placed correctly
+
+commit 6fb0a062d2bc33c6d9d9cc024063d2a75a410dee
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Wed Nov 19 16:57:48 2014 +0100
+
+    + Added GUI elements for MultiCastChatClient
+    
+    Adding GUI connectivity now
+
+commit 8426186afc6c24985665c4ee584f09f67bf38589
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Wed Nov 19 16:17:56 2014 +0100
+
+    - Removed unnecessary variables -> code cleanup
+
+commit fefc1731a64ac4fa7d0bc65f2f5faef2174d8233
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Wed Nov 19 16:14:27 2014 +0100
+
+    ~ Moved main from MultiCastChatMenu to Main
+
+commit f2a1bb59289c76cc422b8ccd1e858de64a59066f
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Wed Nov 19 16:13:14 2014 +0100
+
+    + Added package stokic_taschner.main
+    + Added Main in stokic_taschner.main
+    + Added MultiCastChatClient in stokic_taschner.gui
+
+commit ccc560edcd346ac1553639982fd882893c38daca
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Wed Nov 19 16:09:58 2014 +0100
+
+    + Added GUI elements to MultiCastChatMenu
+    
+    Not looking too well...
+
+commit 3719464a9403172830a3db6603e26468b78bf4d8
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Wed Nov 19 11:09:47 2014 +0100
+
+    renamed methods
+
+commit 8851d2fdcc09118b590a4666f6de96b3cc4162c0
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Wed Nov 19 11:09:16 2014 +0100
+
+    renamed file and methods
+
+commit 4bcd447244097d4277c7ef82bf2282b76c9f871e
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Wed Nov 19 09:15:45 2014 +0100
+
+    no major update, just seperated the code in methods
+
+commit 21e0dddfbe82c2d4b89b1e9e917073d5ef4b95f0
+Merge: 043d073 dbdc3f5
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Wed Nov 19 09:10:42 2014 +0100
+
+    Merge branch 'S04' of https://github.com/tgm-ttaschner/SEW into S04
+
+commit 043d073e247e5f14837165441fe302b37c37a686
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Wed Nov 19 09:07:20 2014 +0100
+
+    no major update, just seperated the code in methods
+
+commit 3340def6e2aa2ea4d598f9a1897fbb0af6746fc4
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Wed Nov 19 09:05:50 2014 +0100
+
+    Interface for the Multicast type
+
+commit 16100ab7eed5ac04f6da0d3f8c1e6de2fb7ff151
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Wed Nov 19 09:05:14 2014 +0100
+
+    ChatListener is now a own class
+
+commit dbdc3f5bb58ee881e5e9c0e925e884e2bb5bebac
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Wed Nov 19 00:07:12 2014 +0100
+
+    + Added non working GUI elements (first draft)
+    
+    Done for today
+
+commit 5d0cc00716002b5824ffc6db988b8b1f67316851
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Tue Nov 18 22:00:18 2014 +0100
+
+    + Added MultiCastChatMenu (no real functionality yet)
+    + Added initial commentary for MultiCastChatMenu
+
+commit e2aadc6332861a34f65344274c61f37e5bd56eb6
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Tue Nov 18 21:20:16 2014 +0100
+
+    ~ Changed the date tag to the version tag since JavaDoc apperantely
+    dislikes the use of @date
+
+commit 871def5f3965f743324db9e897554f0713db2b6b
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Tue Nov 18 21:00:53 2014 +0100
+
+    + Added JUnit to Build Path
+
+commit e5ec4473cf5558d836357395118abcaf94b60a31
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Tue Nov 18 20:55:58 2014 +0100
+
+    + Added package stokic_taschner.gui
+    + Added package stokic_taschner.testing
+    
+    ~ Changed package declaration of stokic_taschner to stokic_taschner.chat
+    ~ Simplified imports
+
+commit 8db340982f730e82764390faa984975025b3e818
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Tue Nov 18 20:29:07 2014 +0100
+
+    + Added commentary
+    + Added current date as username for testing purposes (for now)
+    
+    ~ Better code formatting
+    
+    Current timestamp will be added soon
+
+commit 932171a0bd964683fa1f839a96e7aa5b9acac5a7
+Author: tgm-ttaschner <thomas.taschner@student.tgm.ac.at>
+Date:   Tue Nov 18 17:56:03 2014 +0100
+
+    + Added MultiCastChat (first draft)
+    ~ Moved UML File to docs
+
+commit 41eb83cc70dcc6d10b119f96ef969c80a635e694
+Merge: 9fd0b3d 66947ca
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Mon Nov 17 09:57:36 2014 +0100
+
+    Merge branch 'S04' of https://github.com/tgm-ttaschner/SEW into S04
+
+commit 9fd0b3d9836f5b063cd1c02a8f7b38dbf9d67b5c
+Author: unknown <sstokic@student.tgm.ac.at>
+Date:   Mon Nov 17 09:56:05 2014 +0100
+
+    Pseudo/start UML Diagramm
+
+commit 66947caab12f3a45204dd2ca218dab4161440457
+Author: tgm-ttaschner <tgm-ttaschner@users.noreply.github.com>
+Date:   Thu Oct 9 13:53:25 2014 +0200
+
+    Create README.md
