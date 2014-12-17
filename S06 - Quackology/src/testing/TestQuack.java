@@ -38,8 +38,7 @@ public class TestQuack {
 		System.setErr(new PrintStream(outContent));
 
 		//call your method here
-		String[] main = {};
-		EntenSimulator.main(main);
+		simulator.simulieren(moorEnte);
 
 		//check if your error message is in the output variable
 		assertEquals("Fehlerhafte Parameter!", outContent.toString());
