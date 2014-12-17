@@ -9,18 +9,30 @@ package quack;
  */
 public class ZaehlendeEntenFabrik extends AbstrakteEntenFabrik {
 
+	/**
+	 * Erzeugt eine Stockente mit Counter.
+	 */
 	public Quakfaehig erzeugeStockEnte() {
 		return new QuakZaehler(new StockEnte());
 	}
 
+	/**
+	 * Erzeugt eine Moorente mit Counter.
+	 */
 	public Quakfaehig erzeugeMoorEnte() {
 		return new QuakZaehler(new MoorEnte());
 	}
 
+	/**
+	 * Erzeugt eine Lockpfeife mit Counter.
+	 */
 	public Quakfaehig erzeugeLockPfeife() {
 		return new QuakZaehler(new LockPfeife());
 	}
 
+	/**
+	 * Erzeugt eine Gummiente mit Counter.
+	 */
 	public Quakfaehig erzeugeGummiEnte() {
 		return new QuakZaehler(new GummiEnte());
 	}

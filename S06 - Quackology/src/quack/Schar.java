@@ -14,10 +14,18 @@ import java.util.ArrayList;
 public class Schar implements Quakfaehig {
 	ArrayList<Quakfaehig> quakende = new ArrayList<Quakfaehig>();
   
+	/**
+	 * Fuegt eine Ente zur Schar hinzu.
+	 * 
+	 * @param quaker Die Ente, die zur Schar dazustoesst.
+	 */
 	public void hinzufügen(Quakfaehig quaker) {
 		quakende.add(quaker);
 	}
   
+	/**
+	 * Laesst das ganze Rudel Enten quaken.
+	 */
 	public void quaken() {
 		Iterator<Quakfaehig> iterator = quakende.iterator();
 		while (iterator.hasNext()) {
@@ -26,6 +34,13 @@ public class Schar implements Quakfaehig {
 		}
 	}
    
+	/**
+	 * 
+	 * Macht das Objekt beobachtbar, fuegt einen neuen Zuschauer hinzu.
+	 * 
+	 * @param beobachter Der neue Zuschauer.
+	 * 
+	 */
 	public void registriereBeobachter(Beobachter beobachter) {
 		Iterator<Quakfaehig> iterator = quakende.iterator();
 		while (iterator.hasNext()) {
@@ -34,8 +49,14 @@ public class Schar implements Quakfaehig {
 		}
 	}
   
+	/**
+	 * Stub method
+	 */
 	public void benachrichtigeBeobachtende() { }
   
+	/**
+	 * Zeigt, um welches Objekt es sich handelt.
+	 */
 	public String toString() {
 		return "Entenschar";
 	}

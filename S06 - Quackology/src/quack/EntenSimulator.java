@@ -14,7 +14,17 @@ public class EntenSimulator {
  
 		simulator.simulieren(entenFabrik);
 	}
-  
+	
+	/**
+	 * 
+	 * Enten werden erstellt ('fabriziert'),
+	 * einer Schar hinzugefuegt, die der Observer Quakologe ueberwachen kann,
+	 * dem Quakologen wird gesagt, dass er die Schar ueberwachen soll,
+	 * dann werden die Enten zum Quaken gebracht,
+	 * und der Quakologe zaehlt und berichtet.
+	 * 
+	 * @param entenfabrik Die Fabrik, die verwendet werden soll.
+	 */
 	void simulieren(AbstrakteEntenFabrik entenfabrik) {
   
 		Quakfaehig moorEnte = entenfabrik.erzeugeMoorEnte();
@@ -55,6 +65,12 @@ public class EntenSimulator {
 		                   "-mal gequakt.");
 	}
  
+	/**
+	 * 
+	 * Bringt beliebig viele Enten zum Quaken.
+	 * 
+	 * @param ente Welche Enten quaken sollen (1-x Elemente)
+	 */
 	public void simulieren(Quakfaehig ente) {
 		ente.quaken();
 	}

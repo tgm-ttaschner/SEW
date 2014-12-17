@@ -9,10 +9,16 @@ package quack;
  */
 public class Gans {
 
+	/**
+	 * Die Gans muss schnattern !
+	 */
 	public void schnattern() {
 		System.out.println("Schnatter");
 	}
 
+	/**
+	 * Keine Ente, sondern eine Gans
+	 */
 	public String toString() {
 		return "Gans";
 	}

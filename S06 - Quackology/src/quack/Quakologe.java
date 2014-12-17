@@ -9,10 +9,19 @@ package quack;
  */
 public class Quakologe implements Beobachter {
  
+	/**
+	 * 
+	 * Gibt aus, welche Ente einen Laut von sich gegeben hat.
+	 * 
+	 * @param ente Die spezifische Ente
+	 */
 	public void aktualisieren(QuakBeobachtungsSubjekt ente) {
 		System.out.println("Quakologe: " + ente + " hat gerade gequakt.");
 	}
  
+	/**
+	 * Gibt aus, um welches Objekt es sich handelt.
+	 */
 	public String toString() {
 		return "Quakologe";
 	}
