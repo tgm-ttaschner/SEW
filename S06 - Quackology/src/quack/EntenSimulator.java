@@ -55,7 +55,7 @@ public class EntenSimulator {
 		                   "-mal gequakt.");
 	}
  
-	void simulieren(Quakfaehig ente) {
+	public void simulieren(Quakfaehig ente) {
 		ente.quaken();
 	}
 }
