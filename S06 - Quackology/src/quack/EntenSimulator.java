@@ -25,7 +25,7 @@ public class EntenSimulator {
 	 * 
 	 * @param entenfabrik Die Fabrik, die verwendet werden soll.
 	 */
-	void simulieren(AbstrakteEntenFabrik entenfabrik) {
+	public void simulieren(AbstrakteEntenFabrik entenfabrik) {
   
 		Quakfaehig moorEnte = entenfabrik.erzeugeMoorEnte();
 		Quakfaehig lockPfeife = entenfabrik.erzeugeLockPfeife();
