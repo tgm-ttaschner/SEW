@@ -19,7 +19,7 @@ public class Schar implements Quakfaehig {
 	 * 
 	 * @param quaker Die Ente, die zur Schar dazustoesst.
 	 */
-	public void hinzufügen(Quakfaehig quaker) {
+	public void hinzufuegen(Quakfaehig quaker) {
 		quakende.add(quaker);
 	}
   
